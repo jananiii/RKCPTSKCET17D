@@ -133,12 +133,12 @@
     padding: 20px;
 }
 
-#photoViewer #innerViewer #meta_data{
+#photoViewer #innerViewer #meta_data, #right #meta_data{
     display: flex;
     align-items: center;
 }
 
-#photoViewer #innerViewer #meta_data img{
+#photoViewer #innerViewer #meta_data img, #right #meta_data img{
     border-radius: 50%;
     margin-right: 20px;
 }

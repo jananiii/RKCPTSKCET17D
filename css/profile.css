@@ -86,9 +86,19 @@
 
 #details #right{
     flex: 5;
-    background-color: #fff;
 }
 
 .photos #faces img{
     cursor: pointer;
+}
+
+#post{
+    background-color: #fff;
+    padding: 20px;
+}
+
+#post #content{
+    margin-top: 2%;
+    margin-left: 12%;
+    font-size: 20px;
 }
