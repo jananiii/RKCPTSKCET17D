@@ -25,9 +25,15 @@
 
 #rows .image{
     flex: 2;
-    background-size: cover;
+    background-size: 110%;
+    background-position: center;
     display: flex;
     flex-direction: column-reverse;
+    transition: all 0.3s;
+}
+
+#rows .image:hover{
+    background-size: 115%;
 }
 
 #rows .comments{
