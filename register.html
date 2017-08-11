@@ -1,12 +1,13 @@
 <html>
     <head>
-        <title>Stagger</title>
+        <title>Stagger | Register</title>
         <link rel = "stylesheet" href = "css/style.css">
         <link rel = "stylesheet" href = "css/login.css">
         <link rel = "stylesheet" href = "css/bootstrap.css">
         <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto+Condensed" rel="stylesheet">
         <script src = "js/jquery.js"></script>
         <script src = "js/script.js"></script>
+        <script src = "js/jquery.cookie.js"></script>
 <!--        <script src = "css/materialize/js/materialize.min.js"></script>-->
     </head>
     <body>
@@ -25,11 +26,11 @@
                     <div id = "top">
                         <p class = "logo">stagger</p>
                         <br>
-                        <input type = "text" class = "form-control" placeholder = "Username">
+                        <input id = "username" type = "text" class = "form-control" placeholder = "Username">
                         <br>
-                        <input type = "password" class = "form-control" placeholder = "Password">
+                        <input id = "password" type = "password" class = "form-control" placeholder = "Password">
                         <br><br>
-                        <button class = "btn btn-primary">Login</button>
+                        <button class = "btn btn-primary" onclick = "register()">Sign Up</button>
                     </div>
                     <div id = "footer">
                         &copy; 2017. Stagger.
@@ -44,5 +45,24 @@
         </footer>
 -->
         
+        <script>
+            function register(){
+                var username = $("#username").val();
+                var password = $("#password").val();
+                alert($.cookie('stagger_users'));
+                if($.cookie("stagger_users")){
+                    alert("present");
+                }
+                else{
+                    var users = [username];
+                    var password = [password];
+                    var user_string = users.join('|');
+                    var password_string = password.join('~~~');
+                    alert(users);
+                    $.cookie('stagger_users', user_string, {expires: 1});
+                    $.cookie('stagger_passwords', password_string, {expires: 1});
+                }
+            }
+        </script>
     </body>
 </html>
