@@ -12,6 +12,44 @@
     </head>
     <body>
         
+        <div id = "photoViewer">
+            
+            <div id = "innerViewer">
+                
+                <span id = "closeButton" onclick = "closeButton()" class = "fa fa-close"></span>
+                
+                <div id = "meta_data">
+                    <img src = "images/dp.jpg" width = "90px">
+                    <div>
+                        <p style = "font-size: 17px; font-weight: bold; margin-bottom: 5px;">Sri Ram</p>
+                        <small><span class = "fa fa-globe" style = "margin-right: 5px;"></span>August 11, 2017. 2:50 PM</small>
+                    </div>
+                </div>
+                <hr>
+                
+                <div id = "image_src" style = "background-image: url('images/alan.jpg');"></div>
+                
+                <div id = "likebox">
+                    <span id = "liked" class = "fa fa-thumbs-o-up"></span> <span class = "count" onclick = "like()">102</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class = "fa fa-comments"></span> <span class = "comment_count">1</span>
+                </div>
+                
+                <div id = "photo_comments" style = "max-height: 200px; overflow: scroll;">
+                    <div id = "comment_meta">
+                        <p><b>Ravi</b></p>
+                        <p>This is a new comment</p>
+                    </div>
+                </div>
+                
+                <div id = "comment_text_box">
+                    <input id = "input_comment" type = "text" class = "form-control" style = "margin-right: 20px;" placeholder = "Type your comment">
+                    <button class = "btn btn-success" onclick = "comment()">Post</button>
+                </div>
+                
+            </div>
+            
+        </div>
+        
         <header>
             
             Stagger
@@ -96,12 +134,6 @@
             
         </div>
         
-<!--
-        <footer>
-            &copy; 2017. Stagger.
-        </footer>
--->
-        
         <script>
             
             $(document).ready(function(){
@@ -117,7 +149,52 @@
                     $(this).children(".arrow-up").css("top", w + "px");
                     $(this).children(".arrow-up").css("left", l + "px");
                 });
+                
+                $("#rows .image").on('click', function(){
+                    $("#photoViewer #innerViewer #image_src").css("background-image", $(this).css("background-image"));
+                    $("#photoViewer").fadeIn();
+                    $("#photoViewer").css("display", "flex");
+                });
+                
+                
             });
+            
+            function comment(){
+                var c = $("#input_comment").val();
+                if(c == ""){
+                    alert("Empty comments not allowed");
+                }
+                else{
+                    var data = "<br><div id = 'comment_meta'><p><b>You</b></p><p>" + c + "</p></div>";
+                    $("#photo_comments").append(data);
+                    
+                    var num = parseInt($("#likebox .comment_count").html()) + 1;
+                    $("#likebox .comment_count").html(num);
+                }
+            }
+            
+            function like(){
+                if($("#likebox #liked").hasClass('fa-thumbs-o-up')){
+                    
+                    $("#likebox #liked").removeClass('fa-thumbs-o-up');
+                    $("#likebox #liked").addClass('fa-thumbs-up');
+                    
+                    var num = parseInt($("#likebox .count").html()) + 1;
+                    $("#likebox .count").html(num);
+                }
+                else{
+                    $("#likebox #liked").removeClass('fa-thumbs-up');
+                    $("#likebox #liked").addClass('fa-thumbs-o-up');
+                    
+                    var num = parseInt($("#likebox .count").html()) - 1;
+                    $("#likebox .count").html(num);
+                }
+                
+            }
+            
+            function closeButton(){
+                $("#photoViewer").fadeOut();
+            }
             
         </script>
         
