@@ -44,11 +44,52 @@
                 </div>
 
                 <div id = "second_row">
-
+                    <div class = "text">
+                        <p>"I hope Game of Thrones ends with everybody dead, and the throne realizing that true power comes from the confidence to be yourself."</p>
+                        <span class = "arrow-right"></span>
+                    </div>
+                    
+                    <div class = "image" style = "background-image: url('images/2.jpg');">
+                        
+                    </div>
+                    
+                    <div class = "text alter">
+                        <span class = "fa fa-calendar" style = "font-size: 30px;"></span><br>
+                        <p style = "text-align: center;">TED Talk by Ken Robinson on 12/07/2017</p>
+                    </div>
+                    
+                    <div class = "image" style = "background-image: url('images/vv.jpg');">
+                        
+                    </div>
                 </div>
-
+                
                 <div id = "third_row">
-
+                    
+                    <div class = "image" style = "background-image: url('images/alan.jpg');">
+                        <p class = "description"><span class = "fa fa-comment"></span> Can't beleive he's gone &#128531;</p>
+                    </div>
+                    
+                    <div class = "text alter">
+                        <p style = "text-align: center;"><span class = "fa fa-picture-o"></span> Janani tagged you in a photo.</p>
+                        <span class = "arrow-right"></span>
+                    </div>
+                    
+                    <div class = "text" style = "background-image: url('images/groupfie.jpg'); background-size: cover; background-position: center;">
+                        
+                    </div>
+                    
+                    
+                    <div class = "comments" >
+                        <span class = "arrow-up"></span>
+                        <div class = "meta">
+                            <p style = "font-size: 16px;"><span class = "fa fa-star" style = "color: #f8b044;"></span>&nbsp;&nbsp; <b>Sri</b> posted 52 minutes ago</p>
+                            <p>That was one hell of a movie! &#128525;</p>
+                        </div>
+                        <div class = "comment_meta">
+                            <span class = "fa fa-thumbs-up"></span> 102&nbsp;&nbsp;&nbsp;&nbsp;
+                            <span class = "fa fa-comments"></span> 12
+                        </div>
+                    </div>
                 </div>
                 
             </div>
@@ -60,6 +101,25 @@
             &copy; 2017. Stagger.
         </footer>
 -->
+        
+        <script>
+            
+            $(document).ready(function(){
+                
+                $("#rows .text").each(function(){
+                    var w = $(this).offset().left + $(this).width() + 30;
+                    $(this).children(".arrow-right").css("left", w + "px");
+                });
+                
+                $("#rows .comments").each(function(){
+                    var w = $(this).offset().top - 25;
+                    var l = $(this).offset().left + 25;
+                    $(this).children(".arrow-up").css("top", w + "px");
+                    $(this).children(".arrow-up").css("left", l + "px");
+                });
+            });
+            
+        </script>
         
     </body>
 </html>
